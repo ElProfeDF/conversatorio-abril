@@ -46,92 +46,95 @@
         .hero-title span { color: var(--coral); }
         .hero-sub { font-family: var(--font-code); color: var(--gold); font-size: 1.2rem; letter-spacing: 3px; font-weight: 700; background: rgba(0,0,0,0.6); padding: 5px 15px; }
 
-        /* --- Disertantes (Tarjetas 3D) --- */
+        /* --- SECCIÓN: ¿CÓMO FUE EL HACKEO? (ANIMADA) --- */
+        .hackeo-intro { padding: 120px 15%; background: var(--dark); text-align: center; position: relative; overflow: hidden; }
+        .hackeo-intro::before { content: '</>'; position: absolute; top: 10%; left: 5%; font-size: 10rem; color: rgba(255,127,80,0.03); font-family: var(--font-code); z-index: 0; }
+        .hackeo-content { position: relative; z-index: 1; transform: scale(0.9); opacity: 0; transition: all 1s ease-out; }
+        .hackeo-intro.active .hackeo-content { transform: scale(1); opacity: 1; }
+        .hackeo-intro h2 { font-size: 3rem; font-weight: 900; color: var(--coral); text-transform: uppercase; margin-bottom: 30px; letter-spacing: -1px; }
+        .hackeo-intro p { font-size: 1.4rem; color: var(--gray); font-weight: 300; max-width: 950px; margin: 0 auto; line-height: 1.8; text-align: center; }
+
+        /* --- SECCIÓN LOGÍSTICA --- */
+        .logistica-section { padding: 100px 10%; background: #1a1a1d; text-align: center; display: flex; flex-direction: column; align-items: center; }
+        .section-title { font-size: 2.5rem; font-weight: 900; margin-bottom: 50px; text-transform: uppercase; letter-spacing: -1px; width: 100%; }
+        .section-title span { color: var(--blue); }
+        .free-tag-banner { width: 100%; max-width: 900px; background: var(--gold); color: var(--dark); padding: 15px; border-radius: 50px; font-weight: 900; font-size: 1.5rem; text-transform: uppercase; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(255, 177, 0, 0.2); }
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; width: 100%; justify-items: center; perspective: 1000px; }
+        .info-card { 
+            background: var(--panel); padding: 40px; border-radius: 20px; border-bottom: 4px solid var(--blue); 
+            transition: var(--transition); transform-style: preserve-3d;
+            width: 100%; max-width: 280px;
+        }
+        .info-card:hover { transform: rotateY(10deg) translateY(-10px); border-color: var(--coral); }
+        .info-card i { font-size: 2.5rem; color: var(--gold); margin-bottom: 20px; }
+        .info-card h4 { font-family: var(--font-code); font-size: 0.8rem; color: var(--gray); text-transform: uppercase; margin-bottom: 10px; }
+        .info-card p { font-size: 1.3rem; font-weight: 700; color: var(--white); }
+
+        /* --- Disertantes --- */
         .speakers { padding: 100px 10%; background: var(--panel); text-align: center; }
         .speaker-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-top: 60px; }
-        
-        .flip-card { background-color: transparent; width: 400px; height: 350px; perspective: 1000px; }
+        .flip-card { width: 400px; height: 350px; perspective: 1000px; }
         .flip-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s; transform-style: preserve-3d; cursor: pointer; }
         .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
-        
         .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 25px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px; border: 1px solid #333; }
         .flip-card-front { background: var(--dark); }
         .flip-card-back { background: var(--blue); color: white; transform: rotateY(180deg); text-align: left; }
-        
         .flip-card-front h3 { color: var(--coral); font-size: 2.2rem; margin-bottom: 10px; }
         .flip-card-front span { font-family: var(--font-code); color: var(--gold); font-weight: 700; font-size: 0.9rem; }
-        .flip-card-back p { font-size: 1rem; line-height: 1.5; }
 
         /* --- Bloques --- */
         .blocks { padding: 100px 10%; background: var(--dark); text-align: center; }
         .block-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
         .block-card { background: var(--panel); padding: 60px 40px; border-radius: 20px; cursor: pointer; transition: var(--transition); border: 1px solid #222; }
         .block-card:hover { border-color: var(--coral); transform: translateY(-10px); background: #1a1a1d; }
-        .block-card i { font-size: 3rem; color: var(--gold); margin-bottom: 20px; }
-        .block-card h3 { font-size: 1.8rem; margin-bottom: 10px; }
+        .block-card i { font-size: 3.5rem; color: var(--gold); margin-bottom: 25px; }
 
         /* --- Modales --- */
         .modal { display: none; position: fixed; z-index: 3000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); overflow-y: auto; backdrop-filter: blur(20px); }
         .modal-content { background: var(--panel); margin: 3% auto; width: 90%; max-width: 1000px; padding: 80px 60px; border-radius: 40px; border: 1px solid #444; position: relative; }
-        .close-btn { position: absolute; right: 30px; top: 20px; font-size: 60px; color: var(--coral); cursor: pointer; transition: 0.3s; line-height: 1; z-index: 100; }
+        .close-btn { position: absolute; right: 30px; top: 20px; font-size: 60px; color: var(--coral); cursor: pointer; transition: 0.3s; line-height: 1; z-index: 100; font-weight: 900; }
         .close-btn:hover { color: var(--white); transform: scale(1.1); }
-        
-        .modal-body h2 { font-size: 3.5rem; color: var(--coral); margin-bottom: 20px; }
-        .modal-body .resumen { font-size: 1.2rem; color: var(--white); margin-bottom: 40px; font-weight: 300; text-align: justify; }
+        .modal-body h2 { font-size: 3rem; color: var(--coral); margin-bottom: 20px; }
+        .modal-body .resumen { font-size: 1.15rem; color: var(--white); margin-bottom: 40px; font-weight: 300; text-align: justify; }
         .topic-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; list-style: none; }
         .topic-list li { background: rgba(255,255,255,0.05); padding: 25px; border-radius: 20px; display: flex; align-items: center; gap: 20px; font-weight: 700; }
         .topic-list li i { color: var(--gold); font-size: 1.8rem; width: 40px; text-align: center; }
 
-        /* --- Sección Información Detallada --- */
-        .info-detail { padding: 80px 10%; background: var(--panel); }
-        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; text-align: center; }
-        .info-item { background: var(--dark); padding: 40px; border-radius: 20px; border-bottom: 4px solid var(--blue); }
-        .info-item i { font-size: 2.5rem; color: var(--gold); margin-bottom: 20px; }
-        .info-item h4 { font-family: var(--font-code); font-size: 0.9rem; color: var(--gray); margin-bottom: 10px; }
-        .info-item p { font-size: 1.4rem; font-weight: 700; color: var(--white); }
-
-        /* --- Sección Final Dual --- */
-        .final-footer { padding: 100px 10%; background: var(--white); color: var(--dark); display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: start; }
-        .footer-left { text-align: left; }
-        .footer-left img { max-width: 320px; margin-bottom: 30px; }
-        .footer-left h2 { font-size: 2.5rem; margin-bottom: 15px; color: var(--blue); }
-        .footer-left p { font-size: 1.2rem; margin-bottom: 30px; }
-        
-        .footer-right { background: #f0f0f0; padding: 40px; border-radius: 30px; border: 1px solid #ddd; }
-        .contact-data { list-style: none; margin-bottom: 30px; }
-        .contact-data li { margin-bottom: 15px; font-size: 1.1rem; display: flex; align-items: center; gap: 15px; }
-        .contact-data i { color: var(--blue); font-size: 1.3rem; }
-        .insta-link { display: flex; align-items: center; gap: 10px; color: #E1306C; font-weight: 800; text-decoration: none; font-size: 1.5rem; margin-bottom: 20px; }
-        
-        .map-small { width: 100%; height: 200px; border-radius: 15px; overflow: hidden; border: 3px solid #ccc; }
-        .web-links { display: flex; gap: 20px; margin-top: 30px; }
-        .web-links a { color: var(--blue); text-decoration: none; font-weight: 700; border-bottom: 2px solid var(--blue); }
-
-        /* --- Botón Registro & Animación --- */
-        .cta-container { text-align: center; padding: 60px; background: var(--white); }
-        .btn-pulse {
-            display: inline-block;
-            background: var(--coral);
-            color: white;
-            padding: 25px 60px;
-            font-size: 1.6rem;
-            font-weight: 900;
-            text-decoration: none;
-            border-radius: 60px;
-            animation: pulse-animation 2s infinite;
-            transition: 0.3s;
+        /* --- SECCIÓN AUSPICIANTES (REDiseñada) --- */
+        .sponsors-footer { padding: 100px 10%; background: var(--white); color: var(--dark); text-align: center; border-top: 10px solid var(--gold); }
+        .sponsors-title { font-size: 2.8rem; font-weight: 900; text-transform: uppercase; margin-bottom: 60px; color: var(--dark); letter-spacing: -1px; }
+        .sponsors-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; }
+        .sponsor-card-new { 
+            background: #fff; padding: 50px 30px; border-radius: 40px; 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05); border: 1px solid #eee;
+            display: flex; flex-direction: column; align-items: center; transition: var(--transition);
         }
-        @keyframes pulse-animation {
+        .sponsor-card-new:hover { transform: translateY(-15px); box-shadow: 0 25px 60px rgba(0,0,0,0.1); border-color: var(--blue); }
+        .sponsor-logo-new { max-height: 120px; width: auto; margin-bottom: 40px; transition: 0.4s; }
+        
+        .contact-grid { width: 100%; display: flex; flex-direction: column; gap: 15px; text-align: left; }
+        .contact-item { display: flex; align-items: center; gap: 15px; font-size: 1rem; color: #444; text-decoration: none; font-weight: 500; transition: 0.3s; }
+        .contact-item i { background: #f0f4ff; color: var(--blue); width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+        .contact-item:hover { color: var(--blue); }
+        .contact-item.insta { color: #E1306C; }
+        .contact-item.insta i { background: #fff0f5; color: #E1306C; }
+
+        /* --- Registro Button --- */
+        .cta-container { text-align: center; padding: 80px; background: var(--white); }
+        .btn-register {
+            display: inline-block; background: var(--coral); color: white; padding: 25px 70px; font-size: 1.8rem; font-weight: 900;
+            text-decoration: none; border-radius: 100px; animation: pulse-heart 1.5s infinite; transition: 0.4s;
+        }
+        @keyframes pulse-heart {
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 127, 80, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(255, 127, 80, 0); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 25px rgba(255, 127, 80, 0); }
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 127, 80, 0); }
         }
-        .btn-pulse:hover { background: #000; animation: none; transform: scale(1.1); }
+        .btn-register:hover { background: #000; animation: none; transform: scale(1.1); }
 
         @media (max-width: 1024px) {
-            .final-footer { grid-template-columns: 1fr; }
-            .problem-section { grid-template-columns: 1fr; }
-            .modal-content { padding: 40px 20px; }
+            .sponsors-container { grid-template-columns: 1fr; }
+            .hackeo-intro { padding: 80px 8%; }
         }
     </style>
 </head>
@@ -144,8 +147,17 @@
         </div>
     </header>
 
+    <section class="hackeo-intro reveal">
+        <div class="hackeo-content">
+            <h2>¿Cómo fue el hackeo?</h2>
+            <p>
+                El hackeo no fue un evento súbito, sino una metamorfosis silenciosa de los espacios de socialización. Hemos cedido el andamiaje protector de la crianza a algoritmos de Silicon Valley diseñados para extraer atención, no para proteger la inocencia. Este conversatorio es una disección técnica y vincular para entender cómo el entorno digital desmaterializó el refugio del hogar, transformándolo en un laboratorio de identidad persistente y global donde las infancias navegan sin los frenos cognitivos maduros. Es hora de levantar el velo de las plataformas y recuperar nuestra autoridad amorosa para encender el faro que guíe a nuestros hijos en este ecosistema inevitable.
+            </p>
+        </div>
+    </section>
+
     <section class="speakers reveal">
-        <h2 style="font-size: 3rem; margin-bottom: 20px;">DISERTANTES</h2>
+        <h2 class="section-title">Nuestros <span>Disertantes</span></h2>
         <div class="speaker-grid">
             <div class="flip-card">
                 <div class="flip-card-inner">
@@ -154,7 +166,7 @@
                         <span>PSICOPEDAGOGA</span>
                     </div>
                     <div class="flip-card-back">
-                        <p>Especialista en desarrollo infantil con foco en procesos de aprendizaje. Referente en el diagnóstico de la "Tecnoferencia" y el impacto emocional de la sedación digital en la resiliencia de las nuevas generaciones.</p>
+                        <p>Especialista en desarrollo infantil y juvenil con foco en procesos de aprendizaje. Referente en el diagnóstico de la "Tecnoferencia" y el impacto emocional de la sedación digital en la resiliencia de las nuevas generaciones.</p>
                     </div>
                 </div>
             </div>
@@ -172,82 +184,85 @@
         </div>
     </section>
 
-    <section class="info-detail reveal">
+    <section class="logistica-section reveal">
+        <h2 class="section-title">Información del <span>Encuentro</span></h2>
+        <div class="free-tag-banner">Conversatorio Totalmente Gratuito</div>
         <div class="info-grid">
-            <div class="info-item">
+            <div class="info-card">
                 <i class="fa-solid fa-calendar-day"></i>
-                <h4>CUÁNDO</h4>
+                <h4>Día del Evento</h4>
                 <p>24 de Abril</p>
             </div>
-            <div class="info-item">
+            <div class="info-card">
                 <i class="fa-solid fa-clock"></i>
-                <h4>HORARIO</h4>
+                <h4>Horario</h4>
                 <p>19:00 Horas</p>
             </div>
-            <div class="info-item">
+            <div class="info-card">
                 <i class="fa-solid fa-video"></i>
-                <h4>MEDIO</h4>
+                <h4>Plataforma</h4>
                 <p>Google Meet</p>
             </div>
-            <div class="info-item">
-                <i class="fa-solid fa-users"></i>
-                <h4>DIRIGIDO A</h4>
-                <p>Familias y Educadores</p>
+            <div class="info-card">
+                <i class="fa-solid fa-laptop-code"></i>
+                <h4>Modalidad</h4>
+                <p>Virtual e Interactivo</p>
             </div>
         </div>
     </section>
 
     <section class="blocks reveal">
+        <h2 class="section-title">El Mapa del <span>Daño Digital</span></h2>
         <div class="block-grid">
             <div class="block-card" onclick="openModal('b1')">
                 <i class="fa-solid fa-shield-halved"></i>
                 <h3>El fin del refugio</h3>
-                <p>Auditoría de riesgos: Grooming, ludopatía y la herida digital permanente.</p>
             </div>
             <div class="block-card" onclick="openModal('b2')">
                 <i class="fa-solid fa-user-slash"></i>
                 <h3>El Eje Cero</h3>
-                <p>Nuestra propia atención: ¿Estamos anestesiando su capacidad de frustración?</p>
             </div>
             <div class="block-card" onclick="openModal('b3')">
                 <i class="fa-solid fa-microchip"></i>
                 <h3>La Maquinaria</h3>
-                <p>Diseño persuasivo: El casino mental diseñado para cerebros sin frenos.</p>
             </div>
             <div class="block-card" onclick="openModal('b4')">
                 <i class="fa-solid fa-lighthouse"></i>
                 <h3>Andamiaje F.A.R.O.</h3>
-                <p>La hoja de ruta para recuperar la autoridad amorosa y la tribu protectora.</p>
             </div>
         </div>
     </section>
 
-    <section class="final-footer reveal">
-        <div class="footer-left">
-            <img src="https://www.mifarodigital.com/Images/logo%20mi%20faro%20digital%20alineado.png" alt="Mi Faro Digital">
-            <h2>Conversatorio Gratuito</h2>
-            <p>Este encuentro es de acceso totalmente libre y gratuito, auspiciado por <strong>Mi Faro Digital</strong>, con el objetivo de brindar herramientas críticas a nuestra comunidad frente al avance del entorno digital desregulado.</p>
-            <div class="web-links">
-                <a href="https://www.mifarodigital.com" target="_blank">Web Oficial</a>
-                <a href="https://mifarodigital.mitiendanube.com" target="_blank">Tienda Online</a>
+    <section class="sponsors-footer reveal">
+        <h2 class="sponsors-title">Organizan y Auspician</h2>
+        <div class="sponsors-container">
+            
+            <div class="sponsor-card-new">
+                <img src="https://i.ibb.co/fYDhJXsH/Dise-o-sin-t-tulo-3.png" alt="Mi Faro Digital" class="sponsor-logo-new">
+                <div class="contact-grid">
+                    <span class="contact-item"><i class="fa-solid fa-location-dot"></i> Jacarandaes 6149, Ciudad Jardín</span>
+                    <a href="https://wa.me/541137958174" target="_blank" class="contact-item"><i class="fa-brands fa-whatsapp"></i> 11 3795 8174 (Mensaje)</a>
+                    <a href="https://instagram.com/mifarodigital" target="_blank" class="contact-item insta"><i class="fa-brands fa-instagram"></i> @mifarodigital</a>
+                    <a href="https://www.mifarodigital.com" target="_blank" class="contact-item"><i class="fa-solid fa-globe"></i> www.mifarodigital.com</a>
+                    <a href="https://mifarodigital.mitiendanube.com" target="_blank" class="contact-item"><i class="fa-solid fa-cart-shopping"></i> Tienda Online Oficial</a>
+                </div>
             </div>
-        </div>
-        <div class="footer-right">
-            <ul class="contact-data">
-                <li><i class="fa-solid fa-location-dot"></i> Jacarandaes 6149, Ciudad Jardín Lomas del Palomar</li>
-                <li><i class="fa-solid fa-city"></i> Partido de Tres de Febrero, Buenos Aires</li>
-            </ul>
-            <a href="https://instagram.com/mifarodigital" class="insta-link" target="_blank">
-                <i class="fa-brands fa-instagram"></i> @mifarodigital
-            </a>
-            <div class="map-small">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.148564070055!2d-58.5959!3d-34.6016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDM2JzA1LjgiUyA1OMKwMzUnNDUuMiJX!5e0!3m2!1ses!2sar!4v1700000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+            <div class="sponsor-card-new">
+                <img src="https://i.ibb.co/Df6PM46T/Dise-o-sin-t-tulo-2.png" alt="CIPSI Moreno" class="sponsor-logo-new">
+                <div class="contact-grid">
+                    <span class="contact-item"><i class="fa-solid fa-location-dot"></i> Dardo Rocha 2340, Moreno</span>
+                    <a href="https://wa.me/541169090569" target="_blank" class="contact-item"><i class="fa-brands fa-whatsapp"></i> 11 6909 0569 (Mensaje)</a>
+                    <a href="https://instagram.com/cipsi_consultorios_moreno" target="_blank" class="contact-item insta"><i class="fa-brands fa-instagram"></i> @cipsi_consultorios_moreno</a>
+                    <a href="#" class="contact-item"><i class="fa-solid fa-globe"></i> Consultorios CIPSI</a>
+                </div>
             </div>
+
         </div>
     </section>
 
     <div class="cta-container">
-        <a href="https://forms.google.com" target="_blank" class="btn-pulse">INSCRIBIRME AHORA</a>
+        <a href="https://forms.gle/we2FWP9SC9jHMLqEA" target="_blank" class="btn-register">INSCRIBIRME AHORA</a>
     </div>
 
     <div id="b1" class="modal">
@@ -259,10 +274,10 @@
                     Reconocemos un territorio digital plagado de riesgos amplificados. Históricamente, el refugio era la casa, pero hoy los espacios de socialización se han desmaterializado hacia un ecosistema sin puertas ni supervisión adulta. Analizaremos cómo el ciberacoso persigue al menor hasta su habitación y cómo la humillación digital se vuelve permanente. El peligro ya no se queda afuera al cerrar la puerta; se expande en un laboratorio de identidad globalizado donde las dinámicas de riesgo no encuentran fricción protectora.
                 </div>
                 <ul class="topic-list">
-                    <li><i class="fa-solid fa-masks-theater"></i> Ciberacoso y violencia viral</li>
-                    <li><i class="fa-solid fa-user-secret"></i> Grooming: la ilusión de amistad</li>
+                    <li><i class="fa-solid fa-users-slash"></i> Violencia Viral y Ciberacoso</li>
+                    <li><i class="fa-solid fa-user-secret"></i> Grooming y Ciberengaño</li>
                     <li><i class="fa-solid fa-dice"></i> Ludopatía y Criptocasinos</li>
-                    <li><i class="fa-solid fa-fingerprint"></i> Sharenting y huella heredada</li>
+                    <li><i class="fa-solid fa-fingerprint"></i> Sharenting y Huella Digital</li>
                 </ul>
             </div>
         </div>
@@ -274,13 +289,13 @@
             <div class="modal-body">
                 <h2>BLOQUE 2: EL ESPEJO</h2>
                 <div class="resumen">
-                    Asumimos cómo nuestro propio cansancio abrió la puerta a las pantallas. La tecnoferencia interrumpe el vínculo primario: el niño compite contra un dispositivo por el recurso más valioso, tu atención. Al usar la pantalla como sedante emocional, estamos atrofiando el músculo de la resiliencia infantil. No entregamos el celular por su bienestar, sino por nuestra propia intolerancia a su frustración en medio de un aislamiento sistémico que ha colapsado la aldea de crianza.
+                    Este bloque nos interpela directamente como adultos. El uso temprano de pantallas rara vez nace de la negligencia consciente; es, en la mayoría de los casos, la estrategia de supervivencia de cuidadores estructuralmente exhaustos. Exploraremos el concepto de "Tecnoferencia": el momento en que el dispositivo interrumpe la conexión emocional básica. Al usar la pantalla como "chupete digital" para sedar el aburrimiento, estamos involuntariamente atrofiando el músculo de la resiliencia emocional.
                 </div>
                 <ul class="topic-list">
-                    <li><i class="fa-solid fa-face-meh-blank"></i> Rostro Inexpresivo (Still Face)</li>
-                    <li><i class="fa-solid fa-battery-half"></i> Sociología del cansancio</li>
-                    <li><i class="fa-solid fa-brain"></i> Atrofia de la resiliencia</li>
-                    <li><i class="fa-solid fa-people-roof"></i> El colapso de la aldea</li>
+                    <li><i class="fa-solid fa-face-meh"></i> Rostro Inexpresivo (Still Face)</li>
+                    <li><i class="fa-solid fa-battery-half"></i> Sociología del Cansancio Adulto</li>
+                    <li><i class="fa-solid fa-brain"></i> Anestesia Emocional y Resiliencia</li>
+                    <li><i class="fa-solid fa-people-roof"></i> El Colapso de la Aldea de Crianza</li>
                 </ul>
             </div>
         </div>
@@ -292,12 +307,12 @@
             <div class="modal-body">
                 <h2>BLOQUE 3: LA MAQUINARIA</h2>
                 <div class="resumen">
-                    Diseccionamos una industria diseñada para secuestrar la atención inmadura. Desmontamos el mito del nativo digital: operar software no implica madurez cognitiva. La corteza prefrontal, el freno de los impulsos, no madura hasta los 25 años. Analizaremos la arquitectura de la retención: recompensas variables intermitentes y algoritmos de piedad que inyectan dopamina justo antes del abandono, junto al perfilado matemático de los gemelos digitales.
+                    Diseccionamos una industria diseñada para secuestrar la atención inmadura. Desmontamos el mito del nativo digital: operar software no implica madurez cognitiva. La biología es clara: la corteza prefrontal no termina de madurar hasta los 25 años. Analizaremos la arquitectura de la retención: recompensas variables intermitentes y algoritmos de piedad que inyectan dopamina justo antes del abandono.
                 </div>
                 <ul class="topic-list">
                     <li><i class="fa-solid fa-gears"></i> Diseño Persuasivo (Captología)</li>
-                    <li><i class="fa-solid fa-coins"></i> Recompensas variables</li>
-                    <li><i class="fa-solid fa-robot"></i> El Gemelo Digital (Perfilado)</li>
+                    <li><i class="fa-solid fa-coins"></i> Recompensas Variables de Skinner</li>
+                    <li><i class="fa-solid fa-robot"></i> El Gemelo Digital y Perfilado</li>
                     <li><i class="fa-solid fa-eye"></i> Capitalismo de Vigilancia</li>
                 </ul>
             </div>
@@ -310,10 +325,10 @@
             <div class="modal-body">
                 <h2>BLOQUE 4: ANDAMIAJE</h2>
                 <div class="resumen">
-                    Transformamos la angustia en acción estructurada mediante el Método F.A.R.O. Diseñamos estructuras temporales de seguridad (andamios) para formar usuarios autónomos. No se trata de prohibir, sino de gestionar la herramienta recuperando la autoridad amorosa. Estableceremos estrategias técnicas y vínculos fuertes para que la tecnología esté a nuestro servicio, recuperando el sentido de tribu protectora que la modernidad líquida nos ha arrebatado.
+                    Transformamos la angustia en una hoja de ruta para la acción estructurada. Inspirados en el concepto de "Andamiaje", propondremos la construcción de estructuras temporales de seguridad que permitan al niño habitar el mundo digital sin ser devorado por él. El Método F.A.R.O. ofrece herramientas concretas: desde el rediseño técnico del dispositivo hasta la implementación de reglas de oro y espacios sagrados.
                 </div>
                 <ul class="topic-list">
-                    <li><i class="fa-solid fa-border-all"></i> [F]ronteras de diseño técnico</li>
+                    <li><i class="fa-solid fa-border-all"></i> [F]ronteras: Rediseño del Entorno</li>
                     <li><i class="fa-solid fa-chalkboard-user"></i> [A]lfabetización Algorítmica</li>
                     <li><i class="fa-solid fa-file-contract"></i> [R]eglas y Espacios Sagrados</li>
                     <li><i class="fa-solid fa-hand-holding-heart"></i> [O]rientación y Amnistía</li>
@@ -324,7 +339,7 @@
 
     <script>
         function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
+            var reveals = document.querySelectorAll(".reveal, .hackeo-intro");
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
@@ -332,13 +347,9 @@
             }
         }
         window.addEventListener("scroll", reveal);
-
         function openModal(id) { document.getElementById(id).style.display = "block"; document.body.style.overflow = "hidden"; }
         function closeModal(id) { document.getElementById(id).style.display = "none"; document.body.style.overflow = "auto"; }
-        
-        window.onclick = function(event) {
-            if (event.target.className === "modal") { event.target.style.display = "none"; document.body.style.overflow = "auto"; }
-        }
+        window.onclick = function(event) { if (event.target.className === "modal") { event.target.style.display = "none"; document.body.style.overflow = "auto"; } }
         reveal();
     </script>
 </body>
